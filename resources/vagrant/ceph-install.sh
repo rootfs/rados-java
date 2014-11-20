@@ -27,6 +27,16 @@ enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 gpgcheck=0
 EOF
+cat >> /etc/yum.repos.d/ceph.repo << EOF
+[ceph-noarch]
+name=Ceph noarch packages
+baseurl=http://ceph.com/rpm-firefly/rhel6/noarch
+enabled=1
+gpgcheck=1
+type=rpm-md
+gpgkey=https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc
+EOF
+
 sudo yum update 
-rpm -Uvh http://ceph.com/rpm/rhel6/noarch/ceph-release-1-0.el6.noarch.rpm
-yum install -y -q java-1.6.0-openjdk-devel.x86_64 ceph ceph-common ceph-devel ceph-fuse libcephfs1.x86_64 rbd-fuse
+sudo rpm -Uvh http://ceph.com/rpm/rhel6/noarch/ceph-release-1-0.el6.noarch.rpm
+sudo yum install -y -q java-1.7.0-openjdk-devel.x86_64 ceph ceph-common ceph-devel ceph-fuse libcephfs1.x86_64 rbd-fuse

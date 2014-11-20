@@ -6,7 +6,6 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.provision "shell", path: "ceph-repo-install.sh"
   config.vm.provision "shell", path: "ceph-install.sh"
   config.vm.provision "shell", path: "ceph-fs-create.sh"
   config.vm.provision "shell", path: "dev-setup.sh"
