@@ -37,7 +37,7 @@ log file = ${DIR}/log/mon.log
 chdir = ""  
 mon cluster log file = ${DIR}/log/mon-cluster.log  
 mon data = ${MON_DATA}  
-mon addr = 127.0.0.1  
+mon addr = 127.0.0.1:6789
 EOF
   
 ceph-mon --id 0 --mkfs --keyring /dev/null  
@@ -79,9 +79,9 @@ rados --pool data get group ${DIR}/group
 diff /etc/group ${DIR}/group  
 ceph osd tree  
   
-mkdir -p /mnt/ceph  
-ceph-fuse -m 127.0.0.1:6789 /mnt/ceph/  
-mount
+#mkdir -p /mnt/ceph  
+#ceph-fuse -m 127.0.0.1:6789 /mnt/ceph/  
+#mount
 
 # display usage instructions  
 echo export CEPH_ARGS="'--conf ${DIR}/ceph.conf'"  
