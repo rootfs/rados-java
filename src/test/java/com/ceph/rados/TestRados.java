@@ -196,6 +196,19 @@ public final class TestRados {
         ioctx.remove(oid);
     }
 
+    @Test
+    public void testIoCtxStat() throws Exception {
+        final String oid = "junk-oid";
+        RadosObjectInfo info = null;
+
+        try {
+            info = ioctx.stat(oid);
+        } catch (Exception e) {
+            info = null;
+        }
+        assertTrue("object exists", null == info);
+    }
+
     /**
      * This test creates an object, appends some data and removes it afterwards
      */
